@@ -1,1 +1,33 @@
-
+{
+  "name": "conecta-libras",
+  "version": "1.0.0",
+  "description": "🤟 Tradutor inteligente que converte escrita natural de surdos para português padrão com geração de áudio",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "live-server public --port=3000",
+    "build": "echo 'Build process for static site'",
+    "deploy": "gh-pages -d public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/conecta-libras.git"
+  },
+  "keywords": [
+    "libras",
+    "tradutor",
+    "acessibilidade",
+    "ia",
+    "inclusao",
+    "surdo",
+    "comunicacao",
+    "accessibility",
+    "translation"
+  ],
+  "author": "Seu Nome",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "live-server": "^1.2.2"
+  },
+  "homepage": "https://seu-usuario.github.io/conecta-libras"
+}
