@@ -1,1 +1,321 @@
+/* Banner Styles - Conecta Libras */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+.banner {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+}
+
+.content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(45deg, #ffffff, #f0f8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+.demo-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 600px;
+}
+
+.text-transformation {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.text-input, .text-output {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 1rem;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-input {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.text-output {
+    background: rgba(255, 255, 255, 0.25);
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInOutput 4s infinite;
+}
+
+.transform-arrow {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    animation: bounce 2s infinite;
+}
+
+.typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(20) infinite, blink 1s infinite;
+    border-right: 2px solid white;
+}
+
+@keyframes typing {
+    0%, 20% { width: 0; }
+    50%, 80% { width: 100%; }
+    100% { width: 0; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: white; }
+    51%, 100% { border-color: transparent; }
+}
+
+@keyframes fadeInOutput {
+    0%, 30% { opacity: 0; transform: translateY(10px); }
+    50%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
+.translation-flow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0.2;
+    font-size: 2rem;
+}
+
+.flow-left {
+    left: 8%;
+    top: 25%;
+    animation: float-left 8s ease-in-out infinite;
+}
+
+.flow-right {
+    right: 8%;
+    bottom: 25%;
+    animation: float-right 8s ease-in-out infinite 4s;
+}
+
+@keyframes float-left {
+    0%, 100% { transform: translateX(0) translateY(0); opacity: 0.2; }
+    50% { transform: translateX(15px) translateY(-10px); opacity: 0.4; }
+}
+
+@keyframes float-right {
+    0%, 100% { transform: translateX(0) translateY(0); opacity: 0.2; }
+    50% { transform: translateX(-15px) translateY(10px); opacity: 0.4; }
+}
+
+.arrow {
+    color: rgba(255,255,255,0.6);
+    animation: arrow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes arrow-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(15px);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.tech-symbols {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.symbol {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.1);
+    animation: gentle-move 12s infinite linear;
+}
+
+.symbol:nth-child(1) {
+    left: 15%;
+    top: 15%;
+    animation-delay: 0s;
+}
+
+.symbol:nth-child(2) {
+    right: 20%;
+    top: 20%;
+    animation-delay: -4s;
+}
+
+.symbol:nth-child(3) {
+    left: 25%;
+    bottom: 20%;
+    animation-delay: -8s;
+}
+
+.symbol:nth-child(4) {
+    right: 15%;
+    bottom: 15%;
+    animation-delay: -6s;
+}
+
+@keyframes gentle-move {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(5px) rotate(-3deg); }
+    75% { transform: translateY(-5px) rotate(2deg); }
+}
+
+.feature-highlight {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner {
+        height: 450px;
+    }
+    
+    .logo {
+        font-size: 2.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    
+    .demo-container {
+        margin: 15px 20px;
+        padding: 15px;
+    }
+    
+    .text-input, .text-output {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+    
+    .translation-flow {
+        font-size: 1.5rem;
+        gap: 10px;
+    }
+    
+    .feature-highlight {
+        flex-direction: column;
+        gap: 10px;
+        bottom: 10px;
+    }
+    
+    .flow-left {
+        left: 5%;
+    }
+    
+    .flow-right {
+        right: 5%;
+    }
+}
