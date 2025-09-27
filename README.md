@@ -99,11 +99,11 @@ npm run deploy
 - [ ] Modo offline
 - [ ] PWA (Progressive Web App)
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 📞 Contato
+## Contato
 
 - **GitHub**: [@wrezende2](https://github.com/wrezende2)
 - **Email**: hello@wssstudioart.com
@@ -111,5 +111,27 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 <div align="center">
-  <p>Feito com ❤️ para facilitar a comunicação inclusiva</p>
+  <p>Feito com para facilitar a comunicação inclusiva</p>
 </div>
+
+## Banners e Actions
+
+- Como gerar localmente:
+
+```powershell
+pip install -r tools/banner/requirements.txt
+powershell -ExecutionPolicy Bypass -File tools/banner/run_exports.ps1
+```
+
+- GitHub Actions (Build Social Banners):
+  - Dispara a cada push em `tools/banner/**` ou `assets/logo/**`, ou manual via Actions > Run workflow
+  - Faz o build dos kits Claro e Escuro e publica como Artifacts (ZIPs)
+
+- GitHub Actions (Release Banners):
+  - Disparo manual (workflow_dispatch)
+  - Gera os kits e publica um Release anexando os ZIPs
+  - Arquivo: `.github/workflows/release-banners.yml`
+
+- Dicas:
+  - Para verticais (Stories/TikTok), pode usar `--text-shift -0.08` no gerador
+  - Para EXIF nos JPGs: `--exif-artist`, `--exif-copyright`, `--exif-description`

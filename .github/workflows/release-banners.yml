@@ -1,16 +1,17 @@
-name: Build Social Banners
+name: Release Banners
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'tools/banner/**'
-      - 'assets/logo/**'
-      - '.github/workflows/banner-build.yml'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name (e.g., v1.0.0)'
+        required: false
+      name:
+        description: 'Release name'
+        required: false
 
 jobs:
-  build-banners:
+  build-and-release:
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -54,9 +55,26 @@ jobs:
             --outdir outputs/Final_Dark `
             --zip
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - name: Prepare release metadata
+        id: meta
+        shell: bash
+        run: |
+          TAG="${{ github.event.inputs.tag }}"
+          NAME="${{ github.event.inputs.name }}"
+          if [ -z "$TAG" ]; then TAG="v$(date +%Y%m%d%H%M%S)"; fi
+          if [ -z "$NAME" ]; then NAME="Conecta Libras Banners $(date -u +%F %T UTC)"; fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: conecta-libras-banners
-          path: |
-            outputs/**
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: ${{ steps.meta.outputs.name }}
+          draft: false
+          prerelease: false
+          files: |
+            outputs/Final/*.zip
+            outputs/Final_Dark/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
