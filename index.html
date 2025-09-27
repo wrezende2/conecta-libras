@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html data-theme="base44" lang="pt-BR">
+<html data-theme="conecta-libras" lang="pt-BR">
 <head>
   <meta charset="utf-8"/>
   <link href="./assets/favicon.png" rel="icon"/>
@@ -14,12 +13,11 @@
   <title>Conecta Libras - Tradutor Inteligente</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="./src/styles/banner.css">
-  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="../src/styles/banner.css">
   
   <!-- Meta tags para SEO e redes sociais -->
   <meta content="website" property="og:type">
-  <meta content="https://github.com/seu-usuario/conecta-libras" property="og:url">
+  <meta content="https://wrezende2.github.io/conecta-libras" property="og:url">
   <meta content="Conecta Libras - Tradutor Inteligente" property="og:title">
   <meta content="Tradutor que converte escrita natural de surdos para português padrão com geração de áudio" property="og:description"/>
   
@@ -91,19 +89,66 @@
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-8">
         <h2 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent mb-4">
-          Tradutor em Desenvolvimento
+          Tradutor Inteligente
         </h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Em breve, a funcionalidade completa de tradução estará disponível aqui.
+          Digite sua mensagem e veja a tradução instantânea para português padrão
         </p>
       </div>
       
-      <!-- Placeholder para o tradutor -->
-      <div class="bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg border">
-        <div class="text-center text-gray-500">
-          <div class="text-6xl mb-4">🚧</div>
-          <h3 class="text-xl font-semibold mb-2">Funcionalidade em Desenvolvimento</h3>
-          <p>O tradutor completo será implementado em breve!</p>
+      <!-- Interface do Tradutor -->
+      <div class="grid lg:grid-cols-2 gap-8 mb-8">
+        <!-- Input -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border">
+          <h3 class="text-xl font-semibold mb-4 text-gray-800">Digite sua mensagem:</h3>
+          <textarea 
+            id="inputText" 
+            placeholder="Ex: EU QUERER ÁGUA GELADA"
+            class="w-full h-32 p-4 border-2 border-blue-200 rounded-lg resize-none focus:border-blue-500 focus:outline-none text-lg"
+          ></textarea>
+          <button 
+            id="translateBtn"
+            class="mt-4 bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+          >
+            🔄 Traduzir
+          </button>
+        </div>
+        
+        <!-- Output -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border">
+          <h3 class="text-xl font-semibold mb-4 text-gray-800">Tradução em português:</h3>
+          <div 
+            id="outputText"
+            class="w-full h-32 p-4 bg-gray-50 border-2 border-gray-200 rounded-lg text-lg text-gray-700 overflow-auto"
+          >
+            Sua tradução aparecerá aqui...
+          </div>
+          <button 
+            id="audioBtn"
+            class="mt-4 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300"
+            disabled
+          >
+            🔊 Ouvir Áudio
+          </button>
+        </div>
+      </div>
+      
+      <!-- Exemplos Rápidos -->
+      <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border">
+        <h3 class="text-xl font-semibold mb-4 text-gray-800">Exemplos para testar:</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <button class="example-btn text-left p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <strong>EU QUERER COMER</strong><br>
+            <small class="text-gray-600">→ Eu quero comer</small>
+          </button>
+          <button class="example-btn text-left p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <strong>AMANHÃ EU IR MÉDICO</strong><br>
+            <small class="text-gray-600">→ Amanhã eu vou ao médico</small>
+          </button>
+          <button class="example-btn text-left p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+            <strong>VOCÊ TER TEMPO CONVERSAR?</strong><br>
+            <small class="text-gray-600">→ Você tem tempo para conversar?</small>
+          </button>
         </div>
       </div>
     </div>
@@ -115,11 +160,81 @@
       <h3 class="text-lg font-semibold mb-2">Conecta Libras</h3>
       <p class="text-gray-400">Comunicação inclusiva através da tecnologia</p>
       <div class="mt-4">
-        <a href="https://github.com/seu-usuario/conecta-libras" class="text-blue-400 hover:text-blue-300">
+        <a href="https://github.com/wrezende2/conecta-libras" class="text-blue-400 hover:text-blue-300">
           Ver no GitHub
         </a>
       </div>
     </div>
   </footer>
+
+  <!-- JavaScript Básico -->
+  <script>
+    // Simulação simples de tradução para demonstração
+    const translations = {
+      'EU QUERER COMER': 'Eu quero comer',
+      'EU IR LOJA COMPRAR ROUPA': 'Eu vou à loja comprar roupa',
+      'AMANHÃ EU IR MÉDICO': 'Amanhã eu vou ao médico',
+      'VOCÊ TER TEMPO CONVERSAR?': 'Você tem tempo para conversar?',
+      'EU QUERER ÁGUA GELADA': 'Eu quero água gelada',
+      'HOJE EU FELIZ': 'Hoje eu estou feliz',
+      'EU PRECISAR AJUDA': 'Eu preciso de ajuda'
+    };
+
+    const inputText = document.getElementById('inputText');
+    const outputText = document.getElementById('outputText');
+    const translateBtn = document.getElementById('translateBtn');
+    const audioBtn = document.getElementById('audioBtn');
+    const exampleBtns = document.querySelectorAll('.example-btn');
+
+    translateBtn.addEventListener('click', function() {
+      const input = inputText.value.trim().toUpperCase();
+      
+      if (!input) {
+        outputText.textContent = 'Por favor, digite algo para traduzir.';
+        return;
+      }
+
+      // Busca tradução exata ou faz uma tradução simples
+      let translation = translations[input];
+      
+      if (!translation) {
+        // Tradução simples baseada em regras
+        translation = input.toLowerCase()
+          .replace(/\beu\b/g, 'eu')
+          .replace(/\bir\b/g, 'vou')
+          .replace(/\bquerer\b/g, 'quero')
+          .replace(/\bter\b/g, 'tenho')
+          .replace(/\bprecisar\b/g, 'preciso de')
+          .replace(/\bvocê\b/g, 'você')
+          .replace(/^(\w)/, (match) => match.toUpperCase());
+      }
+
+      outputText.textContent = translation;
+      audioBtn.disabled = false;
+    });
+
+    // Funcionalidade de áudio (usando Web Speech API se disponível)
+    audioBtn.addEventListener('click', function() {
+      const text = outputText.textContent;
+      
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.8;
+        speechSynthesis.speak(utterance);
+      } else {
+        alert('Seu navegador não suporta síntese de voz. Tente usar Chrome ou Firefox.');
+      }
+    });
+
+    // Exemplos clicáveis
+    exampleBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const example = btn.querySelector('strong').textContent;
+        inputText.value = example;
+        translateBtn.click();
+      });
+    });
+  </script>
 </body>
 </html>
