@@ -1,0 +1,59 @@
+name: Build Social Banners
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'tools/banner/**'
+      - 'assets/logo/**'
+      - '.github/workflows/banner-build.yml'
+  workflow_dispatch: {}
+
+jobs:
+  build-banners:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/banner/requirements.txt
+
+      - name: Generate Final Kit (light)
+        run: |
+          python tools/banner/make_banner.py ^
+            --preset final_kit ^
+            --logo "assets/logo/wss_studio_art_logo.png" ^
+            --title "Conecta Libras" ^
+            --subtitle "Comunicação inclusiva sem barreiras" ^
+            --logo-scale 0.20 ^
+            --subtitle-gap 1.6 ^
+            --outdir outputs/Final ^
+            --zip
+
+      - name: Generate Final Kit (dark)
+        run: |
+          python tools/banner/make_banner.py ^
+            --preset final_kit ^
+            --logo "assets/logo/wss_studio_art_logo.png" ^
+            --title "Conecta Libras" ^
+            --subtitle "Comunicação inclusiva sem barreiras" ^
+            --logo-scale 0.20 ^
+            --subtitle-gap 1.6 ^
+            --dark ^
+            --outdir outputs/Final_Dark ^
+            --zip
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: conecta-libras-banners
+          path: |
+            outputs/**
