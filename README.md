@@ -30,8 +30,7 @@ OUTPUT: "Eu vou à loja comprar roupa"
 
 ```
 conecta-libras/
-├── public/
-│   └── index.html          # Página principal
+├── index.html/          # Página principal
 ├── src/
 │   ├── styles/
 │   │   └── banner.css      # Estilos do banner
@@ -45,11 +44,11 @@ conecta-libras/
 ### Opção 1: Visualização Simples
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/conecta-libras.git
+git clone https://github.com/wrezende2/conecta-libras.git
 cd conecta-libras
 ```
 
-2. Abra o arquivo `public/index.html` no navegador
+2. Abra o arquivo `index.html` no navegador
 
 ### Opção 2: Servidor Local
 1. Instale as dependências:
@@ -72,7 +71,7 @@ npm run dev
 ```bash
 npm run deploy
 ```
-3. Acesse: `https://seu-usuario.github.io/conecta-libras`
+3. Acesse: `https://wrezende2.github.io/conecta-libras`
 
 ## 🎨 Características Visuais
 
@@ -106,7 +105,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📞 Contato
 
-- **GitHub**: [@seu-usuario](https://github.com/wrezende2)
+- **GitHub**: [@wrezende2](https://github.com/wrezende2)
 - **Email**: hello@wssstudioart.com
 
 ---
