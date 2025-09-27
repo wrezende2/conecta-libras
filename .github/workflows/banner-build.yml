@@ -12,6 +12,9 @@ on:
 jobs:
   build-banners:
     runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,37 +25,15 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        shell: pwsh
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/banner/requirements.txt
 
       - name: Generate Final Kit (light)
-        shell: pwsh
-        run: |
-          python tools/banner/make_banner.py `
-            --preset final_kit `
-            --logo "assets/logo/wss_studio_art_logo.png" `
-            --title "Conecta Libras" `
-            --subtitle "Comunicação inclusiva sem barreiras" `
-            --logo-scale 0.20 `
-            --subtitle-gap 1.6 `
-            --outdir outputs/Final `
-            --zip
+        run: python tools/banner/make_banner.py --preset final_kit --logo "assets/logo/wss_studio_art_logo.png" --title "Conecta Libras" --subtitle "Comunicação inclusiva sem barreiras" --logo-scale 0.20 --subtitle-gap 1.6 --outdir outputs/Final --zip
 
       - name: Generate Final Kit (dark)
-        shell: pwsh
-        run: |
-          python tools/banner/make_banner.py `
-            --preset final_kit `
-            --logo "assets/logo/wss_studio_art_logo.png" `
-            --title "Conecta Libras" `
-            --subtitle "Comunicação inclusiva sem barreiras" `
-            --logo-scale 0.20 `
-            --subtitle-gap 1.6 `
-            --dark `
-            --outdir outputs/Final_Dark `
-            --zip
+        run: python tools/banner/make_banner.py --preset final_kit --logo "assets/logo/wss_studio_art_logo.png" --title "Conecta Libras" --subtitle "Comunicação inclusiva sem barreiras" --logo-scale 0.20 --subtitle-gap 1.6 --dark --outdir outputs/Final_Dark --zip
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
