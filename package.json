@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "live-server public --port=3000",
     "build": "echo 'Build process for static site'",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public",
+    "start": "live-server public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/seu-usuario/conecta-libras.git"
+    "url": "https://github.com/wrezende2/conecta-libras.git"
   },
   "keywords": [
     "libras",
@@ -21,13 +22,21 @@
     "surdo",
     "comunicacao",
     "accessibility",
-    "translation"
+    "translation",
+    "brasil",
+    "portuguese"
   ],
-  "author": "Seu Nome",
+  "author": "Wesley Rezende <hello@wssstudioart.com>",
   "license": "MIT",
   "devDependencies": {
     "gh-pages": "^6.0.0",
     "live-server": "^1.2.2"
   },
-  "homepage": "https://seu-usuario.github.io/conecta-libras"
+  "homepage": "https://wrezende2.github.io/conecta-libras",
+  "bugs": {
+    "url": "https://github.com/wrezende2/conecta-libras/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }
